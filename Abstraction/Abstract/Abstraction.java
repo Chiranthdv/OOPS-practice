@@ -1,51 +1,35 @@
 package Abstraction.Abstract;
 
-abstract class Animal {
-    String name;
-    public Animal() {
-        this("Unknown");
+abstract class Vehicle {
+    abstract void drive();
+    void startEngine() {
+        System.out.println("Engine started");
     }
-    public Animal(String name) {
-        this.name = name;
-    }
-    abstract void sound();
-    public void eat() {
-        System.out.println(name + " is eating");
+    void stopEngine() {
+        System.out.println("Engine stopped");
     }
 }
-class Dog extends Animal {
-    public Dog() {
-        this("Unknown");
-    }
-    public Dog(String name) {
-        super(name);
-    }
+class Car extends Vehicle {
     @Override
-    public void sound() {
-        System.out.println(name + " barks");
+    void drive() {
+        System.out.println("Car drives using a steering wheel");
     }
 }
-class Cat extends Animal {
-    public Cat() {
-        this("Unknown");
-    }
-    public Cat(String name) {
-        super(name);
-    }
+class Bike extends Vehicle {
     @Override
-    public void sound() {
-        System.out.println(name + " meows");
+    void drive() {
+        System.out.println("Bike drives using a handlebar");
     }
 }
-public class Abstraction {
+public class Main {
     public static void main(String[] args) {
-        Animal a = new Dog("Tommy");
-        a.sound();
-        a.eat();
-        //abstraction achieved here now the type is animal and the functionality is sound so it is showing only functionality but 
-        //it hide the implementation of the sound means it will implemented in the child class.
-        Animal b = new Cat("Kitty");
-        b.sound();
-        b.eat();
+        Vehicle car = new Car();
+        car.startEngine();
+        car.drive();
+        car.stopEngine();
+        Vehicle bike = new Bike();
+        bike.startEngine();
+        bike.drive();
+        bike.stopEngine();
     }
 }
